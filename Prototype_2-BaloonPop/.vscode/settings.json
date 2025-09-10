@@ -66,5 +66,8 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
     },
-    "dotnet.defaultSolution": "Prototype_2-BaloonPop.sln"
+    "dotnet.defaultSolution": "Prototype_2-BaloonPop.sln",
+    "cSpell.words": [
+        "Behaviour"
+    ]
 }
