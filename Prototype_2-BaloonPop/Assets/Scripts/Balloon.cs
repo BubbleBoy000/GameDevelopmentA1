@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Balloon : MonoBehaviour
 {
     public int clicksToPop = 3; // Number of clicks required to pop the balloon
-    public float scaleToIncrease = 0.15f; // Amount to increase the scale on each click
+    private float scaleToIncrease = 0.15f; // Amount to increase the scale on each click
     public int scoreToGive; // Score to give when the balloon is popped
     private ScoreManager scoreManager; // Reference to the ScoreManager script
     public GameObject popEffect; // Particle effect prefab to instantiate on pop
@@ -13,7 +13,7 @@ public class Balloon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Updates every click
@@ -38,4 +38,8 @@ public class Balloon : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    void Update()
+{
+    
+}
 }
