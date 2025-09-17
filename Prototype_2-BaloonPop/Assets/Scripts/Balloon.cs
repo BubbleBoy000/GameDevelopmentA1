@@ -13,7 +13,7 @@ public class Balloon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     }
 
     // Updates every click
@@ -27,19 +27,10 @@ public class Balloon : MonoBehaviour
         //Check if the balloon should pop
         if (clicksToPop == 0)
         {
-            //Add to the score
-            //scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
-            //scoreManager.UpdateScore(scoreToGive);
+            scoreManager.IncreaseScore(scoreToGive); //Increase the score
 
-            //Instantiate the pop effect
-            //Instantiate(popEffect, transform.position, transform.rotation);
-
-            //Destroy the balloon
-            Destroy(gameObject);
+            Destroy(gameObject); //Destroy the balloon
         }
     }
-    void Update()
-{
     
-}
 }

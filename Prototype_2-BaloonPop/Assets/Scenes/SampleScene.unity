@@ -645,6 +645,52 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &664709698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664709700}
+  - component: {fileID: 664709699}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &664709699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664709698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25dff12663d71b409e3072d4526bb55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  scoreText: {fileID: 0}
+--- !u!4 &664709700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664709698}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -118.6279, y: 0, z: -8.41501}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,8 +751,9 @@ GameObject:
   - component: {fileID: 1656330273}
   - component: {fileID: 1656330275}
   - component: {fileID: 1656330274}
+  - component: {fileID: 1656330276}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -830,6 +877,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656330272}
   m_CullTransparentMesh: 1
+--- !u!114 &1656330276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656330272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25dff12663d71b409e3072d4526bb55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  scoreText: {fileID: 1656330274}
 --- !u!1 &1711634826
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +1011,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2208556235215471773, guid: 83a62687e097f7945918cec3c9e0a93b, type: 3}
       propertyPath: speed
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3233661363566437492, guid: 83a62687e097f7945918cec3c9e0a93b, type: 3}
       propertyPath: clicksToPop
@@ -1059,7 +1120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766650545057394266, guid: fb6f807fdbda62f4bb3c78ca6ec09a75, type: 3}
       propertyPath: clicksToPop
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3766650545057394266, guid: fb6f807fdbda62f4bb3c78ca6ec09a75, type: 3}
       propertyPath: scoreToGive
@@ -1096,7 +1157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4968181337607276833, guid: e9cb51cc06de56e44be0ccf6f96f3186, type: 3}
       propertyPath: speed
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7622412486163165223, guid: e9cb51cc06de56e44be0ccf6f96f3186, type: 3}
       propertyPath: m_Name
@@ -1169,7 +1230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4101466433529102840, guid: c35ddad291af99f4ab38f9d5f6585942, type: 3}
       propertyPath: speed
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7611845829990045704, guid: c35ddad291af99f4ab38f9d5f6585942, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1266,7 +1327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6367300353100068039, guid: 20f02e076c3955840bd3b6d912130df4, type: 3}
       propertyPath: speed
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7664693219379384488, guid: 20f02e076c3955840bd3b6d912130df4, type: 3}
       propertyPath: scoreToGive
@@ -1343,7 +1404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8730236411103763064, guid: c60669e2c2520774e886f68b53a2fb66, type: 3}
       propertyPath: speed
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1364,7 +1425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1761013153291659750, guid: 71faa4e2031292e4ca6f05cda4289118, type: 3}
       propertyPath: speed
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2814108243853190940, guid: 71faa4e2031292e4ca6f05cda4289118, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1429,7 +1490,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1830085003597861049, guid: 1c128050bdbe6c14dbcbb3fa086d6386, type: 3}
       propertyPath: speed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7867497302266524653, guid: 1c128050bdbe6c14dbcbb3fa086d6386, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1550,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226223005564141979, guid: c5ff51a89b59ef144acd6653f717a8d5, type: 3}
       propertyPath: speed
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1571,7 +1632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7132244983917542318, guid: e09c65e798104d24f96fcd9205bc83f0, type: 3}
       propertyPath: clicksToPop
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7132244983917542318, guid: e09c65e798104d24f96fcd9205bc83f0, type: 3}
       propertyPath: scoreToGive
@@ -1647,3 +1708,4 @@ SceneRoots:
   - {fileID: 370473194}
   - {fileID: 204686826}
   - {fileID: 1711634830}
+  - {fileID: 664709700}
