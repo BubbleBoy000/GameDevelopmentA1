@@ -3,7 +3,7 @@ using TMPro; // Add this
 
 public class DoorInteraction : MonoBehaviour
 {
-    public float interactDistance = 3f;
+    public float interactDistance = 1f;
     public Camera playerCamera;
     public TextMeshProUGUI interactionText; // Change type
 
