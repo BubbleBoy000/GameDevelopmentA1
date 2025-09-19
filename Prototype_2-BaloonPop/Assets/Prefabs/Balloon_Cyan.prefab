@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2876964736677025944}
   m_Layer: 0
   m_Name: Balloon_Cyan
-  m_TagString: Untagged
+  m_TagString: Balloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2933483936007946130}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -12.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.7059, y: 2.4098475, z: 2.7059}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c635d7c71bb322f43bf2895ef3da328d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 12
 --- !u!114 &2876964736677025944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,10 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734c0d3f8d594484fa620a18a9673c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksToPop: 3
-  scaleToIncrease: 0.15
-  scoreToGive: 0
-  popEffect: {fileID: 0}
+  clicksToPop: 5
+  scoreToGive: 1500
+  popEffect: {fileID: 2766498446737156943, guid: feaabadc8f8b175468a1ad5cabfbccda, type: 3}
 --- !u!1 &4742957980818514976
 GameObject:
   m_ObjectHideFlags: 0

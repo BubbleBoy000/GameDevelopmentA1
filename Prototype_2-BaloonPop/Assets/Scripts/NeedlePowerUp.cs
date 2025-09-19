@@ -2,18 +2,32 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
 public class NeedlePowerUp : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public int clicksToActivate = 5;
+    private int clickCount = 0;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // Nothing needed here for this feature
+    }
+
+    void OnMouseDown()
+    {
+        clickCount++;
+        if (clickCount >= clicksToActivate)
+        {
+            PopAllBalloons();
+            Destroy(gameObject);
+        }
+    }
+
+    void PopAllBalloons()
+    {
+        GameObject[] balloons = GameObject.FindGameObjectsWithTag("Balloon");
+        foreach (GameObject balloon in balloons)
+        {
+            Destroy(balloon);
+        }
     }
 }

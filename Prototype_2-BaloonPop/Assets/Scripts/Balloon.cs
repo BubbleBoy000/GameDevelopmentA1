@@ -28,7 +28,10 @@ public class Balloon : MonoBehaviour
         if (clicksToPop == 0)
         {
             scoreManager.IncreaseScore(scoreToGive); //Increase the score
-
+            if (popEffect != null)
+            {
+                Instantiate(popEffect, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject); //Destroy the balloon
         }
     }

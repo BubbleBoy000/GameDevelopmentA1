@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4415563129222872189}
   m_Layer: 0
   m_Name: Balloon_Purple
-  m_TagString: Untagged
+  m_TagString: Balloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 3347152260010466447}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.7059, y: 2.4098475, z: 2.7059}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c635d7c71bb322f43bf2895ef3da328d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 6
 --- !u!114 &4415563129222872189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,9 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clicksToPop: 3
-  scaleToIncrease: 0.15
-  scoreToGive: 0
-  popEffect: {fileID: 0}
+  scoreToGive: 750
+  popEffect: {fileID: 3604236703458636371, guid: 46e1da66bd046514797736e4f82dc200, type: 3}
 --- !u!1 &6383052190782788341
 GameObject:
   m_ObjectHideFlags: 0
