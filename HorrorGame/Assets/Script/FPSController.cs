@@ -17,7 +17,10 @@ namespace CharacterScript
         public Camera playerCamera;
         public float lookSpeed = 2.0f;
         public float lookXLimit = 45.0f;
-        
+        public float crouchSpeed = 4.0f;
+        public float crouchHeight = 1.0f;
+        public float standingHeight = 2.0f;
+        public float crouchCameraYOffset = -0.5f;
 
         CharacterController characterController;
         Vector3 moveDirection = Vector3.zero;
@@ -26,6 +29,9 @@ namespace CharacterScript
         [HideInInspector]
         public bool canMove = true;
 
+        bool isCrouching = false;
+        Vector3 cameraInitialLocalPos;
+
         void Start()
         {
             characterController = GetComponent<CharacterController>();
@@ -33,6 +39,9 @@ namespace CharacterScript
             // Lock cursor
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
+            standingHeight = characterController.height;
+            cameraInitialLocalPos = playerCamera.transform.localPosition;
         }
 
         void Update()
@@ -42,8 +51,9 @@ namespace CharacterScript
             Vector3 right = transform.TransformDirection(Vector3.right);
             // Press Left Shift to run
             bool isRunning = Input.GetKey(KeyCode.LeftShift);
-            float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
-            float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
+            float speed = isCrouching ? crouchSpeed : (isRunning ? runningSpeed : walkingSpeed);
+            float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
+            float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
             float movementDirectionY = moveDirection.y;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
@@ -74,6 +84,22 @@ namespace CharacterScript
                 rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
                 playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
                 transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+            }
+
+            // Crouch logic
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                isCrouching = true;
+                characterController.height = crouchHeight;
+                Vector3 camPos = cameraInitialLocalPos;
+                camPos.y += crouchCameraYOffset;
+                playerCamera.transform.localPosition = camPos;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                isCrouching = false;
+                characterController.height = standingHeight;
+                playerCamera.transform.localPosition = cameraInitialLocalPos;
             }
         }
     }
