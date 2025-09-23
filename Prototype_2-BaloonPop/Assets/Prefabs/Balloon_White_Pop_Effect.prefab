@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1828024654740638716}
   - component: {fileID: 7091551718855152423}
   - component: {fileID: 6777157248806701962}
+  - component: {fileID: 7728853857310069604}
   m_Layer: 0
   m_Name: Balloon_White_Pop_Effect
   m_TagString: Untagged
@@ -41,7 +42,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5691087690542898962}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -4833,3 +4834,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7728853857310069604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5691087690542898962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8700e1059740d47a869898cbc22523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 3

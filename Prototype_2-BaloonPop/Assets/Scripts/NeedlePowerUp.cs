@@ -6,6 +6,7 @@ public class NeedlePowerUp : MonoBehaviour
 {
     public int clicksToActivate = 5;
     private int clickCount = 0;
+    public GameObject popEffect; // Particle effect prefab to instantiate on pop
 
     void Update()
     {
@@ -25,6 +26,10 @@ public class NeedlePowerUp : MonoBehaviour
     void PopAllBalloons()
     {
         GameObject[] balloons = GameObject.FindGameObjectsWithTag("Balloon");
+        if (popEffect != null)
+            {
+                Instantiate(popEffect, transform.position, Quaternion.identity);
+            }
         foreach (GameObject balloon in balloons)
         {
             Destroy(balloon);

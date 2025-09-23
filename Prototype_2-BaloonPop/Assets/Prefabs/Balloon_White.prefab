@@ -359,6 +359,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  upperBound: 20
+  scoreManager: {fileID: 0}
+  balloon: {fileID: 0}
 --- !u!114 &7132244983917542318
 MonoBehaviour:
   m_ObjectHideFlags: 0
