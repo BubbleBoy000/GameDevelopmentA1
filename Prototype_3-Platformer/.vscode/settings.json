@@ -66,5 +66,10 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
     },
-    "dotnet.defaultSolution": "Prototype_3-Platformer.sln"
+    "dotnet.defaultSolution": "Prototype_3-Platformer.sln",
+    "cSpell.words": [
+        "Behaviour",
+        "Rigidbody",
+        "UGUI"
+    ]
 }
