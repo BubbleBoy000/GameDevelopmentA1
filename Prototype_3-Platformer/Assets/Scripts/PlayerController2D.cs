@@ -51,12 +51,16 @@ public class PlayerController2D : MonoBehaviour
         }
 
     }
-    void OnCollisionEnter2d(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        //If player collides with the ground, set isGrounded to true
-        if (collision.GetContact(0).normal == Vector2.up)
+        foreach (ContactPoint2D contact in collision.contacts)
         {
-            isGrounded = true;
+            // If the contact normal is mostly upwards (within 45 degrees)
+            if (Vector2.Angle(contact.normal, Vector2.up) < 45f)
+            {
+                isGrounded = true;
+                break;
+            }
         }
     }
         public void GameOver()
