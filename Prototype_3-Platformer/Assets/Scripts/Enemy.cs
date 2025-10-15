@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OmTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //Did we hit the player?
         if (collision.CompareTag("Player"))
