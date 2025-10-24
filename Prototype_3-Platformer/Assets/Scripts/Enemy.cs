@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    /* private void OnDrawGizmos()
     {
         Vector3 from;
         Vector3 to;
@@ -70,5 +70,5 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawLine(from, to);
         Gizmos.DrawWireSphere(to, 0.2f);
         Gizmos.DrawWireSphere(from, 0.2f);
-    }
+    }*/
 }
