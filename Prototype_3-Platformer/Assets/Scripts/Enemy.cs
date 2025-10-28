@@ -38,6 +38,25 @@ public class Enemy : MonoBehaviour
                 targetPos = startPos;
             }
         }
+            // Move towards the target position
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+
+            // Flip sprite based on movement direction
+            Vector3 direction = targetPos - transform.position;
+            if (direction.x != 0)
+            {
+                Vector3 scale = transform.localScale;
+                scale.x = Mathf.Sign(direction.x) * Mathf.Abs(scale.x);
+                transform.localScale = scale;
+            }
+
+            // Are we at the target position?
+            if (transform.position == targetPos)
+            {
+                // Toggle target position
+                targetPos = (targetPos == startPos) ? startPos + moveOffset : startPos;
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,7 +69,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    /* private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Vector3 from;
         Vector3 to;
@@ -70,5 +89,5 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawLine(from, to);
         Gizmos.DrawWireSphere(to, 0.2f);
         Gizmos.DrawWireSphere(from, 0.2f);
-    }*/
+    }
 }
