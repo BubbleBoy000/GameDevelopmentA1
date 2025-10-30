@@ -11,8 +11,9 @@ public class PlayerController2D : MonoBehaviour
     public float jumpForce; //How high the player jumps
     public bool isGrounded; //Is the player on the ground T/F?
     public int bottomBound = -4;
+    public int score = 0; // <--- add this
 
-    // Animator reference (assign in Inspector)
+    // Animator reference
     public Animator animator;
 
     //Reference Types
@@ -34,11 +35,11 @@ public class PlayerController2D : MonoBehaviour
 
         //Make the player move side to side
         // use Rigidbody2D.velocity (rig.linearVelocity may not exist)
-        rig.velocity = new Vector2(moveInput * moveSpeed, rig.velocity.y);
+        rig.linearVelocity = new Vector2(moveInput * moveSpeed, rig.linearVelocity.y);
 
         // Update moving bool (tweak threshold if you need deadzone)
         if (animator != null)
-            animator.SetBool("Moving", Mathf.Abs(moveInput) > 0.1f);
+            animator.SetBool("Running", Mathf.Abs(moveInput) > 0.1f);
     }
 
     void Update()
