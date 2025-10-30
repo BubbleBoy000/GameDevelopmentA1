@@ -6,14 +6,14 @@ using TMPro;
 
 public class PlayerController2D : MonoBehaviour
 {
-    //Value Types
     [Header("Player Settings")]
     public float moveSpeed; //How fast the player moves side to side
     public float jumpForce; //How high the player jumps
     public bool isGrounded; //Is the player on the ground T/F?
     public int bottomBound = -4;
-    [Header("Score")]
-    public int score; //Store the score value
+
+    // Animator reference (assign in Inspector)
+    public Animator animator;
 
     //Reference Types
     public Rigidbody2D rig; //Rigidbody component reference
@@ -31,8 +31,14 @@ public class PlayerController2D : MonoBehaviour
     {
         //Gather Inputs
         float moveInput = Input.GetAxis("Horizontal");
+
         //Make the player move side to side
-        rig.linearVelocity = new Vector2(moveInput * moveSpeed, rig.linearVelocity.y);
+        // use Rigidbody2D.velocity (rig.linearVelocity may not exist)
+        rig.velocity = new Vector2(moveInput * moveSpeed, rig.velocity.y);
+
+        // Update moving bool (tweak threshold if you need deadzone)
+        if (animator != null)
+            animator.SetBool("Moving", Mathf.Abs(moveInput) > 0.1f);
     }
 
     void Update()
@@ -41,6 +47,9 @@ public class PlayerController2D : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
         {
             isGrounded = false;
+            // set jumping before applying force so animation responds immediately
+            if (animator != null) animator.SetBool("Jumping", true);
+
             rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); //Makes the player jump with all of the force applied
         }
 
@@ -49,8 +58,8 @@ public class PlayerController2D : MonoBehaviour
         {
             GameOver();
         }
-
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         foreach (ContactPoint2D contact in collision.contacts)
@@ -59,11 +68,22 @@ public class PlayerController2D : MonoBehaviour
             if (Vector2.Angle(contact.normal, Vector2.up) < 45f)
             {
                 isGrounded = true;
+                // landed -> clear jumping flag
+                if (animator != null) animator.SetBool("Jumping", false);
                 break;
             }
         }
     }
-        public void GameOver()
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        // Optional: if we leave any collider, we may not be grounded anymore
+        // You can add checks to ensure it was a ground layer
+        isGrounded = false;
+        if (animator != null) animator.SetBool("Jumping", true);
+    }
+
+    public void GameOver()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
