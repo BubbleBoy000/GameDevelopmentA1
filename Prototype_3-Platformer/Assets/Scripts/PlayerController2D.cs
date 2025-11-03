@@ -15,6 +15,8 @@ public class PlayerController2D : MonoBehaviour
 
     // Animator reference
     public Animator animator;
+    public string runningParam = "Running";
+    public string jumpingParam = "Jumping";
 
     //Reference Types
     public Rigidbody2D rig; //Rigidbody component reference
@@ -28,18 +30,29 @@ public class PlayerController2D : MonoBehaviour
         //Update score text UI
         scoreText.text = "Score: " + score;
     }
+    void Start()
+    {
+        if (animator == null)
+            animator = GetComponent<Animator>(); // auto-assign if Animator is on same GameObject
+
+        // auto-assign common references if not set in Inspector
+        if (rig == null) rig = GetComponent<Rigidbody2D>();
+        if (scoreText == null) scoreText = FindObjectOfType<TMPro.TextMeshProUGUI>();
+    }
+
     void FixedUpdate()
     {
         //Gather Inputs
         float moveInput = Input.GetAxis("Horizontal");
 
         //Make the player move side to side
-        // use Rigidbody2D.velocity (rig.linearVelocity may not exist)
-        rig.linearVelocity = new Vector2(moveInput * moveSpeed, rig.linearVelocity.y);
+        // use velocity (Rigidbody2D.velocity), not linearVelocity
+        if (rig != null)
+            rig.linearVelocity = new Vector2(moveInput * moveSpeed, rig.linearVelocity.y);
 
-        // Update moving bool (tweak threshold if you need deadzone)
+        // Update running bool (tweak threshold if you need deadzone)
         if (animator != null)
-            animator.SetBool("Running", Mathf.Abs(moveInput) > 0.1f);
+            animator.SetBool(runningParam, Mathf.Abs(moveInput) > 0.1f);
     }
 
     void Update()
@@ -48,10 +61,11 @@ public class PlayerController2D : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
         {
             isGrounded = false;
-            // set jumping before applying force so animation responds immediately
-            if (animator != null) animator.SetBool("Jumping", true);
+            // set jumping trigger so animation responds immediately
+            if (animator != null) animator.SetTrigger(jumpingParam);
 
-            rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); //Makes the player jump with all of the force applied
+            if (rig != null)
+                rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
         //If the player falls out of the level, reset the scene
@@ -65,12 +79,12 @@ public class PlayerController2D : MonoBehaviour
     {
         foreach (ContactPoint2D contact in collision.contacts)
         {
-            // If the contact normal is mostly upwards (within 45 degrees)
             if (Vector2.Angle(contact.normal, Vector2.up) < 45f)
             {
                 isGrounded = true;
-                // landed -> clear jumping flag
-                if (animator != null) animator.SetBool("Jumping", false);
+                // Jump is a Trigger, so no SetBool needed here.
+                // Optionally reset triggers if you used them elsewhere:
+                // if (animator != null) animator.ResetTrigger(jumpingParam);
                 break;
             }
         }
@@ -78,10 +92,8 @@ public class PlayerController2D : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        // Optional: if we leave any collider, we may not be grounded anymore
-        // You can add checks to ensure it was a ground layer
+        // Leaving contact likely means not grounded
         isGrounded = false;
-        if (animator != null) animator.SetBool("Jumping", true);
     }
 
     public void GameOver()

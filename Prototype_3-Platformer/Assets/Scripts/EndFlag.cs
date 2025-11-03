@@ -10,19 +10,26 @@ public class EndFlag : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Did the player collide with the end flag?
-        if (collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player"))
+            return;
+
+        if (finalLevel)
         {
-            // If this is the final level, go to the menu
-            if (finalLevel == true)
-            {
-                SceneManager.LoadScene(0);
-            }
-            else
-            {
-                // Load the next level
-                SceneManager.LoadScene(nextLevelName);
-            }
+            SceneManager.LoadScene(0);
+            return;
         }
+
+        if (!string.IsNullOrEmpty(nextLevelName))
+        {
+            SceneManager.LoadScene(nextLevelName);
+            return;
+        }
+
+        // fallback: load next scene in build order if nextLevelName not provided
+        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextIndex < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(nextIndex);
+        else
+            Debug.LogWarning("EndFlag: nextLevelName empty and no next scene in Build Settings.");
     }
 }
