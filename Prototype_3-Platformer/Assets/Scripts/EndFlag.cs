@@ -8,6 +8,11 @@ public class EndFlag : MonoBehaviour
     public bool finalLevel;
     public string nextLevelName;
 
+    private void Start()
+    {
+        Debug.Log($"EndFlag: initialized (finalLevel={finalLevel}, nextLevelName='{nextLevelName}')");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log($"EndFlag: OnTriggerEnter2D with '{collision.name}' (tag='{collision.tag}')");
@@ -25,7 +30,7 @@ public class EndFlag : MonoBehaviour
             Debug.LogWarning("EndFlag: collided object has Player tag but no PlayerController2D component.");
         }
 
-        if (finalLevel)
+        if (finalLevel == true)
         {
             Debug.Log("EndFlag: finalLevel -> load scene 0");
             SceneManager.LoadScene(0);

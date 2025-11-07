@@ -1828,10 +1828,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndFlag
       objectReference: {fileID: 0}
-    - target: {fileID: 179217468590235533, guid: 85a9015007a019a4cbabcaff06e88869, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 402502067546864590, guid: 85a9015007a019a4cbabcaff06e88869, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.625
@@ -1872,9 +1868,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4964621270304849956, guid: 85a9015007a019a4cbabcaff06e88869, type: 3}
-      propertyPath: nextLevelName
-      value: Level_2
+    - target: {fileID: 8187013037642602401, guid: 85a9015007a019a4cbabcaff06e88869, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
